@@ -1,7 +1,5 @@
-/*
-Author: Sabbir Hossain
-Problem Link: https://leetcode.com/problems/merge-two-sorted-lists
-*/
+// Author: Sabbir Hossain
+// Problem Link: https://leetcode.com/problems/merge-two-sorted-lists
 
 /**
  * Definition for singly-linked list.
