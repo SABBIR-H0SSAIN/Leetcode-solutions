@@ -1,5 +1,5 @@
 // Author: Sabbir Hossain
-// Problem Link: https://leetcode.com/problems/merge-k-sorted-lists/
+// Problem Link: https://leetcode.com/problems/merge-k-sorted-lists
 
 /**
  * Definition for singly-linked list.
