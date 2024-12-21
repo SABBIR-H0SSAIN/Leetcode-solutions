@@ -51,3 +51,38 @@ public:
         return res;
     }
 };
+
+// @2nd Approch ( Using Min Heap )
+
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+
+        if(!lists.size()) return nullptr;
+
+        ListNode *dummy = new ListNode(-1);
+        ListNode *ptr = dummy;
+        priority_queue<pair<int,ListNode*>,vector<pair<int,ListNode *>>,greater<pair<int,ListNode *>>> pq;
+
+        for(int i=0;i<lists.size();i++){
+            if(lists[i]){
+                pq.push({lists[i]->val,lists[i]});
+            }
+        }
+
+        while(!pq.empty()){
+
+            ListNode *top=pq.top().second;
+            ptr->next = top;
+            pq.pop();
+
+            if(top->next){
+                pq.push({top->next->val,top->next});
+            }
+
+            ptr=ptr->next;
+        }
+
+        return dummy->next;
+    }
+};
