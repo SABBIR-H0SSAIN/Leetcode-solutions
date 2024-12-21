@@ -12,7 +12,7 @@
  * };
  */
 
- //1st Approch
+ //@1st Approch (Using Size Calculation )
 
 class Solution {
 public:
@@ -39,5 +39,24 @@ public:
         if (temp->next) temp->next = temp->next->next;
 
         return head;
+    }
+};
+
+// Optimized approch ( Without Size Calculations )
+
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode *dummy= new ListNode(-1,head);
+        ListNode *temp=dummy;
+        for(int i=0;i<n;i++) head=head->next;
+
+        while(head){
+            head=head->next;
+            temp=temp->next;
+        }
+
+        temp->next = temp->next->next;
+        return dummy->next;
     }
 };
