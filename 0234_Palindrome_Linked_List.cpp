@@ -33,3 +33,24 @@ public:
         return st.empty();
     }
 };
+
+ // @2nd Approch (Using Vector Array)
+
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+
+        vector<int> arr;
+        ListNode *temp = head;
+
+        while(temp){
+            arr.push_back(temp->val);
+            temp=temp->next;
+        }
+
+        for(int i=0;i*2<arr.size();i++){
+            if(arr[i] != arr[arr.size()-i-1]) return false;
+        }
+        return true;
+    }
+};
