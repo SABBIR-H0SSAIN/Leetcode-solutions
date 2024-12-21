@@ -37,7 +37,6 @@ public:
         }
 
         if (temp->next) temp->next = temp->next->next;
-        else temp->next = nullptr;
 
         return head;
     }
