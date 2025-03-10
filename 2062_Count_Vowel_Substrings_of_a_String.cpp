@@ -18,7 +18,7 @@ public:
               
                 while(j<word.size() && isVowel(word[j])){
                     st.insert(word[j]);
-                    if(st.size()>=5) ans++;
+                    if(st.size()==5) ans++;
                     j++;
                 }
             }
