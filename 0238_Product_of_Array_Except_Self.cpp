@@ -22,3 +22,26 @@ public:
         return nums;
     }
 };
+
+
+// @reduced space approch for prefix and suffix array
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+
+        int pre=1, suff=1;
+        vector<int>ans(nums.size(),1);
+
+        for(int i=0;i<nums.size();i++){
+            int j=nums.size()-i-1;
+
+            ans[i]*=pre;
+            pre*=nums[i];
+
+            ans[j]*=suff;
+            suff*=nums[j];
+        }
+
+        return ans;
+    }
+};
