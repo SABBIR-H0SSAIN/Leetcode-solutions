@@ -23,7 +23,7 @@ public:
     }
 };
 
-// Using bitwise to keep tract of used bits and xor to remove used bits
+//@Using bitwise to keep track of used bits and xor to remove used bits
 class Solution {
 public:
     int longestNiceSubarray(vector<int>& nums) {
