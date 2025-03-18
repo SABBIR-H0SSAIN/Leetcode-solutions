@@ -22,3 +22,20 @@ public:
         return longest;
     }
 };
+
+// Using bitwise to keep tract of used bits and xor to remove used bits
+class Solution {
+public:
+    int longestNiceSubarray(vector<int>& nums) {
+        int l=0,bits=0;
+        int longest=0;
+
+        for(int i=0;i<nums.size();i++){
+            while((bits&nums[i]) !=0) bits^=nums[l++];
+
+            bits|=nums[i];
+            longest=max(longest,i-l+1);
+        }
+        return longest;
+    }
+};
