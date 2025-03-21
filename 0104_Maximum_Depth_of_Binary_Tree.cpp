@@ -25,3 +25,27 @@ public:
         return max(left,right);
     }
 };
+
+// Iterative solution using bfs
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if(root == nullptr) return 0;
+
+        queue<pair<TreeNode*,int>>q;
+        q.push({root,1});
+        int ans=0;
+
+        while(!q.empty()){
+            TreeNode *node=q.front().first;
+            int depth=q.front().second;
+            ans=max(ans,depth);
+            q.pop();
+
+            if(node->left) q.push({node->left,depth+1});
+            if(node->right) q.push({node->right,depth+1});
+        }
+
+        return ans;
+    }
+};
