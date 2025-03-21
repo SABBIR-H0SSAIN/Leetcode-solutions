@@ -16,15 +16,12 @@
 // @Recursive Solution
 class Solution {
 public:
-    int depth(TreeNode *root,int dep){
-        if(root == nullptr) return dep;
-
-        int left=depth(root->left,dep+1);
-        int right=depth(root->right,dep+1);
-        
-        return max(left,right);
-    }
     int maxDepth(TreeNode* root) {
-        return depth(root,0);
+        if(root==nullptr) return 0;
+
+        int left=maxDepth(root->left)+1;
+        int right=maxDepth(root->right)+1;
+
+        return max(left,right);
     }
 };
