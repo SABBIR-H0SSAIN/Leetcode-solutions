@@ -53,3 +53,42 @@ public:
         return count;
     }
 };
+
+// @DFS approch solution
+class Solution {
+public:
+    void dfs(int n,vector<vector<int>>&g,vector<bool>&visited,int &v,int &e,int source){
+        visited[source]=true;
+        v++;
+        e+=g[source].size();
+
+        for(auto adj : g[source]){
+            if(!visited[adj]){
+                dfs(n,g,visited,v,e,adj);
+            }
+        }
+    }
+
+    int countCompleteComponents(int n, vector<vector<int>>& edges) {
+        vector<vector<int>>g(n);
+        vector<bool>visited(n,false);
+        int count=0,v,e;
+
+        for(int i=0;i<edges.size();i++){
+            int u=edges[i][0];
+            int v=edges[i][1];
+
+            g[u].push_back(v);
+            g[v].push_back(u);
+        }
+
+        for(int i=0;i<n;i++){
+            if(visited[i]) continue;
+            v=e=0;
+            
+            dfs(n,g,visited,v,e,i);
+            count += (e==v*(v-1));
+        }
+        return count;
+    }
+};
