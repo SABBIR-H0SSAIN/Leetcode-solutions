@@ -22,3 +22,30 @@ public:
         return count; 
     }
 };
+
+// Middle Index Approch O(n^2) solution
+class Solution {
+public:
+    int oddPalindrome(string &s,int mid){
+        int l=mid,r=mid,count=0;
+        while(l>=0 && r<s.size() && s[l--]==s[r++]) count++;
+        return count;
+    }
+
+    int evenPalindrome(string &s,int mid){
+        int l=mid,r=mid+1,count=0;
+        while(l>=0 && r<s.size() && s[l--]==s[r++]) count++;
+        return count;
+    }
+   
+    int countSubstrings(string s) {
+        int count=0;
+        
+        for(int i=0;i<s.size();i++){
+            count+=evenPalindrome(s,i);
+            count+=oddPalindrome(s,i);
+        }
+
+        return count;
+    }
+};
