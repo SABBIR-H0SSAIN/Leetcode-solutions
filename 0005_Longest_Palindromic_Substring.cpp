@@ -1,5 +1,5 @@
-Author: sabbir Hossain
-Problem Link: https://leetcode.com/problems/longest-palindromic-substring
+// Author: sabbir Hossain
+// Problem Link: https://leetcode.com/problems/longest-palindromic-substring
 
 // Brute force approch O(n^3) time
 class Solution {
