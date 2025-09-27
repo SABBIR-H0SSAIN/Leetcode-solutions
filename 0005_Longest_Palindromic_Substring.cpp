@@ -26,6 +26,9 @@ public:
         }
 
         return s.substr(startIdx,max_len);
+        
+    }
+};
 
 // Middle index method O(n^2) method
 class Solution {
