@@ -19,3 +19,18 @@ public:
         return min(dp[n-1],dp[n-2]);
     }
 };
+
+
+// O(1) Space solution without dp array
+class Solution {
+public:
+    int minCostClimbingStairs(vector<int>& cost) {
+        int n=cost.size();
+
+        for(int i=2;i<n;i++){
+            cost[i]+=min(cost[i-1],cost[i-2]);
+        }
+        
+        return min(cost[n-1],cost[n-2]);
+    }
+};
