@@ -1,7 +1,7 @@
 Author: sabbir Hossain
 Problem Link: https://leetcode.com/problems/longest-palindromic-substring
 
-// Brute force approch
+// Brute force approch O(n^3) time
 class Solution {
 public:
     bool isPalindrome(string &s ,int l,int r){
@@ -26,6 +26,43 @@ public:
         }
 
         return s.substr(startIdx,max_len);
+
+// Middle index method O(n^2) method
+class Solution {
+public:
+    void oddPalindrome(string &s,int mid,int &startIdx, int &maxLen){
+        int l=mid,r=mid;
+        while(l>=0 && r<s.size() && s[l]==s[r]){
+            if(r-l+1 > maxLen){
+                startIdx=l;
+                maxLen=r-l+1;
+            }
+            l--,r++;
+        }
+    }
+
+    void evenPalindrome(string &s,int mid,int &startIdx, int &maxLen){
+        int l=mid,r=mid+1;
+        while(l>=0 && r<s.size() && s[l]==s[r]){
+            if(r-l+1 > maxLen){
+                startIdx=l;
+                maxLen=r-l+1;
+            }
+            l--,r++;
+        }
+    }
+    string longestPalindrome(string s) {
+        int startIdx=0;
+        int maxLen=1;
+
+        for(int i=0;i<s.size();i++){
+            evenPalindrome(s,i,startIdx,maxLen);
+            oddPalindrome(s,i,startIdx,maxLen);
+        }
+
+        return s.substr(startIdx,maxLen);
+    }
+};
         
     }
 };
