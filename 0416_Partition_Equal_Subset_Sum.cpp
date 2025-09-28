@@ -1,6 +1,7 @@
 // Author: Sabbir Hossain
 // Problem Link: https://leetcode.com/problems/partition-equal-subset-sum
 
+// Recursive method
 class Solution {
 public:
     bool rec(vector<int>&nums,int i,int target,int cur,vector<vector<int>>&dp){
@@ -30,5 +31,28 @@ public:
         vector<vector<int>>dp(target+1,vector<int>(nums.size(),-1));
         return rec(nums,0,target,0,dp);
       
+    }
+};
+
+//Iterative method
+class Solution {
+public:
+
+    bool canPartition(vector<int>& nums) {
+        int sum=accumulate(nums.begin(),nums.end(),0);
+        if(sum&1) return false;
+
+        int requiredSum=sum/2;
+        vector<bool>dp(requiredSum+1,false);
+        dp[0]=true;
+
+        for(int i=0;i<nums.size();i++){
+            for(int sum=requiredSum;sum>=nums[i];sum--){
+                if(dp[sum-nums[i]]) dp[sum]=true;
+                if(dp[requiredSum]) return true;
+            }
+        }
+
+        return dp[requiredSum];
     }
 };
