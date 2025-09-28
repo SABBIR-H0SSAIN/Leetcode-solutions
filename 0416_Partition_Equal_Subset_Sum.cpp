@@ -1,7 +1,7 @@
 // Author: Sabbir Hossain
 // Problem Link: https://leetcode.com/problems/partition-equal-subset-sum
 
-// Recursive method
+// Recursive method 2D dp
 class Solution {
 public:
     bool rec(vector<int>&nums,int i,int target,int cur,vector<vector<int>>&dp){
@@ -34,7 +34,7 @@ public:
     }
 };
 
-//Iterative method
+// Iterative method 1D dp
 class Solution {
 public:
 
